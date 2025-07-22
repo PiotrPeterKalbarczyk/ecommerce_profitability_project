@@ -208,3 +208,6 @@ __marimo__/
 
 #folder with raw data
 data/raw
+
+#env files
+.env
