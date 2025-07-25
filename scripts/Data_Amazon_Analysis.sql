@@ -221,3 +221,19 @@ WHERE STYLE IN ('JNE1998',
 SELECT * FROM amazon_risky_products;
 --Extracted full details of products from the high-volume, low-margin group to examine promotions, 
 --fulfillment method (Amazon vs. Merchant), and size variations.
+
+-------------------------------------------------------------------------
+
+SELECT * FROM amazon_high_margin ahm
+WHERE volume_class = 'LOW' AND profit_class = 'NORMAL'
+ORDER BY cost_per_unit ASC;
+
+SELECT * FROM amazon_high_volume_low_margin ahvlm
+ORDER BY profit ASC, cost_per_unit DESC
+LIMIT (3);
+
+CREATE TABLE information_schema_worst_style AS (
+SELECT * FROM ecommerce_data
+WHERE STYLE IN ('JNE1998', 'JNE1234', 'JNE3603') AND status != 'Cancelled');
+
+--Analysed the best and the worst products in the entire analysis
